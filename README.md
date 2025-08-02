@@ -38,6 +38,7 @@ Tabel: `buku`
 
 2. **Install Dependency Laravel**
 
+   ```bash
    composer install
 
 3. **Salin dan Atur File Environment**
@@ -98,17 +99,22 @@ Tabel: `buku`
 
 ## 📁 Struktur Folder Penting
 
-app/
-├── Http/
-│   └── Controllers/
-│       └── BukuController.php
+Struktur direktori utama dalam proyek ini:
+
+```
+CRUD-LARAVEL/
+├── app/
+|   ├── Http/
+|       └── Controllers/
+|           └── BukuController.php
 ├── Models/
-│   └── Buku.php
-database/
-└── migrations/
-    └── 2025_07_31_100735_create_buku_table.php
-resources/
-├── views/
-│   └── index.blade.php
-routes/
-└── web.php
+|   └── Buku.php
+├── database/
+|   └── migrations/
+|       └── 2025_07_31_100735_create_buku_table.php
+├── resources/
+|   └── views/
+|       └── index.blade.php
+├── routes/
+    └── web.php
+```
