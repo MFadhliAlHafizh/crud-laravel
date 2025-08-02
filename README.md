@@ -1,61 +1,114 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📚 Aplikasi Perpustakaan Sederhana (Laravel 12)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi ini adalah proyek **CRUD** (Create, Read, Update, Delete) sederhana untuk mengelola data buku. Dibangun menggunakan **Laravel 12**, **Tailwind CSS** untuk tampilan antarmuka, dan menggunakan **phpMyAdmin** sebagai antarmuka basis data.
 
-## About Laravel
+## 🔧 Fitur
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Menampilkan daftar buku dengan pagination
+- Menambahkan buku baru
+- Mengedit data buku
+- Menghapus satu buku
+- Menghapus seluruh data buku
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 💻 Teknologi yang Digunakan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel 12**
+- **Tailwind CSS**
+- **phpMyAdmin** (MySQL)
 
-## Learning Laravel
+## 🧱 Struktur Database
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Tabel: `buku`
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+| Kolom         | Tipe Data      | Keterangan                   |
+|---------------|----------------|------------------------------|
+| id            | BIGINT         | Primary key (auto-increment) |
+| judul         | VARCHAR(255)   | Wajib, minimal 3 karakter    |
+| pengarang     | VARCHAR(100)   | Wajib, minimal 3 karakter    |
+| tahun_terbit  | INTEGER        | Wajib, 4 digit               |
+| timestamps    | TIMESTAMP      | Diatur otomatis Laravel      |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Instalasi dan Menjalankan Aplikasi
 
-## Laravel Sponsors
+1. **Clone Repository**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+   ```bash
+   git clone https://github.com/MFadhliAlHafizh/crud-laravel.git
+   cd cd crud-laravel
 
-### Premium Partners
+2. **Install Dependency Laravel**
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+   composer install
 
-## Contributing
+3. **Salin dan Atur File Environment**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+   - Salin file `.env.example` dan ubah namanya menjadi `.env`:
+     ```bash
+     cp .env.example .env
+     ```
 
-## Code of Conduct
+   - Buka file `.env`, lalu sesuaikan konfigurasi database Anda:
+     ```
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=crud-laravel
+     DB_USERNAME=root
+     DB_PASSWORD=
+     ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Akses Database melalui phpMyAdmin**
 
-## Security Vulnerabilities
+   - Buka **phpMyAdmin** di browser Anda:
+     ```
+     http://localhost/phpmyadmin
+     ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   - Buat database baru dengan nama **`crud-laravel`**, sesuai dengan nilai `DB_DATABASE` di file `.env`.
 
-## License
+5. **Generate Key Aplikasi**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   Jalankan perintah berikut untuk menghasilkan application key:
+   ```bash
+   php artisan key:generate
+
+6. **Migrasi Tabel ke Database**
+
+   Jalankan migrasi untuk membuat tabel `buku` di Database:
+   ```bash
+   php artisan migrate
+
+7. **Jalankan Server**
+
+   Untuk menjalankan server lokal Laravel, gunakan perintah:
+   ```bash
+   php artisan serve
+
+## 🧭 Routing
+
+| Method   | URL            | Aksi                    | Route Name       |
+|----------|----------------|-------------------------|------------------|
+| GET      | /              | Menampilkan semua buku  | buku.index       |
+| POST     | /              | Menambahkan buku        | buku.store       |
+| GET      | /{id}/edit     | Menampilkan form edit   | buku.edit        |
+| PUT      | /{id}/update   | Memperbarui data buku   | buku.update      |
+| DELETE   | /{id}/delete   | Menghapus satu buku     | buku.delete      |
+| DELETE   | /deleteAll     | Menghapus semua buku    | buku.deleteAll   |
+
+
+## 📁 Struktur Folder Penting
+
+app/
+├── Http/
+│   └── Controllers/
+│       └── BukuController.php
+├── Models/
+│   └── Buku.php
+database/
+└── migrations/
+    └── 2025_07_31_100735_create_buku_table.php
+resources/
+├── views/
+│   └── index.blade.php
+routes/
+└── web.php
