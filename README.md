@@ -14,6 +14,7 @@ Aplikasi ini adalah proyek **CRUD** (Create, Read, Update, Delete) sederhana unt
 
 - **Laravel 12**
 - **Tailwind CSS**
+- **Vite**
 - **phpMyAdmin** (MySQL)
 
 ## 🧱 Struktur Database
@@ -34,12 +35,14 @@ Tabel: `buku`
 
    ```bash
    git clone https://github.com/MFadhliAlHafizh/crud-laravel.git
-   cd cd crud-laravel
+   cd crud-laravel
 
 2. **Install Dependency Laravel**
-
+   Pastikan Anda sudah menginstall Node.js.
    ```bash
    composer install
+   npm install
+   npm run dev
 
 3. **Salin dan Atur File Environment**
 
@@ -105,9 +108,9 @@ Struktur direktori utama dalam proyek ini:
 CRUD-LARAVEL/
 ├── app/
 |   ├── Http/
-|       └── Controllers/
-|           └── BukuController.php
-├── Models/
+|   |   └── Controllers/
+|   |       └── BukuController.php
+|   Models/
 |   └── Buku.php
 ├── database/
 |   └── migrations/
